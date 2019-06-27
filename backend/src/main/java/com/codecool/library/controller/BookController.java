@@ -34,10 +34,18 @@ public class BookController {
         bookRepo.save(newBook);
 
         Set<Specimen> specimenSet = newBook.getSpecimens();
-        for (Specimen spec : specimenSet) {
-            spec.setBook(newBook);
-            specimenRepo.save(spec);
+        if(specimenSet == null){
+            Specimen specimen =new Specimen("2019",30,newBook);
+            specimenRepo.save(specimen);
+        }else {
+            for (Specimen spec : specimenSet) {
+                System.out.println(spec.getBookingTime());
+                spec.setBook(newBook);
+                specimenRepo.save(spec);
+            }
         }
+
+
 
         return newBook;
     }
@@ -47,10 +55,13 @@ public class BookController {
         Book bookToDelete = bookRepo.findById(id).get();
 
         Set<Specimen> specimenSet = bookToDelete.getSpecimens();
-        for (Specimen spec : specimenSet) {
-            Long idToDelete = spec.getId();
-            specimenRepo.deleteById(idToDelete);
+        if(specimenSet !=null){
+            for (Specimen spec : specimenSet) {
+                Long idToDelete = spec.getId();
+                specimenRepo.deleteById(idToDelete);
+            }
         }
+
         bookRepo.deleteById(id);
     }
 

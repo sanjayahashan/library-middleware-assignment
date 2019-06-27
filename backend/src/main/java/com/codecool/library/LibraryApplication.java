@@ -22,51 +22,8 @@ public class LibraryApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(LibraryApplication.class, args);
+        SpringApplication.run(LibraryApplication.class);
         System.out.println("************************************");
-    }
-
-    @Bean
-    public CommandLineRunner demo(UserRepository userRepo,
-                                  BookRepository bookRepo,
-                                  SpecimenRepository specimenRepo,
-                                  BorrowingRepository borrowingRepo ) {
-        return(args) -> {
-            System.out.println("----------------------------------");
-            List<Book> bookList = bookRepo.findAllByOrderByTitle();
-
-            for (Book book : bookList) {
-                System.out.println("Title: " + book.getTitle() + "   |  Author: " + book.getAuthor());
-            }
-            System.out.println("----------------------------------");
-
-
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date today = new Date();
-           // System.out.println(dateFormat.format(today));
-
-            List<Borrowing> borrowingList = borrowingRepo.getBorrowingByReturnDateIsNullAndExpireBefore(today);
-            for (Borrowing borrow : borrowingList) {
-                System.out.println(borrow.getUser().getEmail() + " |  " + borrow.getSpecimen().getBook().getTitle());
-            }
-
-            System.out.println("----------------------------------");
-
-            List<Specimen> specimenList = specimenRepo.findAllByBook_Title("How to be a Hero to Your Kids");
-            for (Specimen spec : specimenList) {
-                System.out.println(spec.getBook().getTitle());
-            }
-
-            System.out.println("----------------------------------");
-
-            List<Book> availableList = bookRepo.findMyQuery();
-            for (Book ava : availableList) {
-                System.out.println(ava.getTitle());
-            }
-
-
-
-        };
     }
 
 

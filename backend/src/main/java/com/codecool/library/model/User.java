@@ -1,6 +1,7 @@
 package com.codecool.library.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Set;
 
 @Entity
@@ -14,6 +15,7 @@ public class User {
     private String firstName;
     @Column
     private String lastName;
+    @Email
     @Column
     private String email;
     @Column
