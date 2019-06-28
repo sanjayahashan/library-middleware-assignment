@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookService } from 'src/app/shared/services/book.service';
 import { Observable } from 'rxjs';
 import { Book } from '../../shared/models/book'
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -26,23 +26,23 @@ export class BooksComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'author', 'actions'];
   expandedElement: Book | null;
 
+  @ViewChild(MatTable, {static:true}) table: MatTable<Book>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(
     private bookService: BookService
-  ) {
+    ) { 
+      
+    }
+
+  ngOnInit() {
     this.getBooks().subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
       console.log(this.dataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-
-  }
-
-  ngOnInit() {
-    
   }
 
   getBooks() {
@@ -55,5 +55,12 @@ export class BooksComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  deleteBook(book: Book) {
+    this.bookService.delete(book).subscribe(res => {
+      console.log(book);
+      this.table.renderRows();
+    });
   }
 }

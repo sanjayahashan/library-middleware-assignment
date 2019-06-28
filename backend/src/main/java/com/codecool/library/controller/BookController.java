@@ -4,6 +4,7 @@ import com.codecool.library.model.Book;
 import com.codecool.library.model.Specimen;
 import com.codecool.library.repository.BookRepository;
 import com.codecool.library.repository.SpecimenRepository;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class BookController {
         return bookRepo.findAllByOrderByTitle();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/library/book")
     public Book addNewBook(@RequestBody Book newBook) {
 
@@ -50,6 +52,7 @@ public class BookController {
         return newBook;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/library/book/{id}")
     public void deleteBook(@PathVariable Long id) {
         Book bookToDelete = bookRepo.findById(id).get();
@@ -64,12 +67,17 @@ public class BookController {
 
         bookRepo.deleteById(id);
     }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(method = RequestMethod.PUT, value = "/library/book/{id}")
+	public void updateBook(@RequestBody Book book, @PathVariable String id)
+	{
+		bookRepo.save(book);
+	}
 
-    @PutMapping("/library/book/{id}")
-   // public Book updateBook;
 
-
-    @GetMapping("/library/book/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value="/library/book/{id}")
     public Book getBookById(@PathVariable("id") Long id) {
         return bookRepo.findById(id).get();
     }

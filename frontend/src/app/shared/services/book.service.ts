@@ -25,8 +25,15 @@ export class BookService {
   }
 
   update(book: Book): Observable<Book> {
-    return this.http.put<Book>(serverUrl + book._id, book);
+    return this.http.put<Book>(serverUrl + book.id, book);
   }
 
+  get(id: string): Observable<Book> {
+    return this.http.get<Book>(serverUrl + id);
+  }
+
+  delete(book: Book): Observable<Book> {
+    return this.http.delete<Book>(serverUrl + book.id);
+  }
 
 }
