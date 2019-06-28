@@ -11,13 +11,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksComponent } from './components/books/books.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookCreateComponent,
     NavBarComponent,
-    BooksComponent
+    BooksComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

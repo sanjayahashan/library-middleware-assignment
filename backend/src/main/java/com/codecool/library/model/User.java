@@ -19,18 +19,18 @@ public class User {
     @Column
     private String email;
     @Column
-    private String pesel;
+    private String password;
 
     @OneToMany (mappedBy="user")
     private Set<Borrowing> borrowings;
 
     public User() {}
 
-    public User(String firstName, String lastName, String email, String pesel) {
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.pesel = pesel;
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -58,10 +58,10 @@ public class User {
     }
 
     public String getPesel() {
-        return pesel;
+        return password;
     }
 
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
+    public void setPesel(String password) {
+        this.password = password;
     }
 }

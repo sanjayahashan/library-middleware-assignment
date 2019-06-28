@@ -8,6 +8,8 @@ import com.codecool.library.repository.UserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/Users/login")
+    @PostMapping("/users/login")
     public User login(@RequestBody login user){
         String userid =user.getUsername();
         String password =user.getPassword();
@@ -34,10 +36,17 @@ public class UserController {
         Error_reply error =new Error_reply("Could not Authenticate User");
         return  null;
     }
-    @PostMapping("/Users/Register")
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(method = RequestMethod.POST, value ="/users/register")
     public User register(@RequestBody User register){
         userRepository.save(register);
         return register;
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    public List<User> getAllUsers() {
+    	return userRepository.findAll();
     }
 
 }

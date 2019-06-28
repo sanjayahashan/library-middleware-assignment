@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Register</h2>
+  <form method="post" [formGroup]="userForm">
+      <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="John" formControlName="firstName"
+                 [errorStateMatcher]="matcher">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Doe" formControlName="lastName"
+                   [errorStateMatcher]="matcher">
+          </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="johndoe@gmail.com" formControlName="email"
+                 [errorStateMatcher]="matcher">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+  </form>
+</div>
