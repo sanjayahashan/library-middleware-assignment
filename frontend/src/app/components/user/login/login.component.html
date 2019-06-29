@@ -1,0 +1,23 @@
+<div class="login-form">
+  <form method="post" [formGroup]="loginForm">
+  <div class="avatar">
+    <img src="assets/baseline-local_library-24px" alt="Avatar">
+  </div>
+      <h2 class="text-center">Login</h2>   
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="John" formControlName="username"
+               [errorStateMatcher]="matcher">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password"
+               [errorStateMatcher]="matcher">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
+
+      <p class="text-center small">Don't have an account? <a routerLink="/register">Sign up here!</a></p>
+  </form>
+</div>
