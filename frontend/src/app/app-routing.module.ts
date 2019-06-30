@@ -7,6 +7,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { UserIndexComponent } from './components/user/user-index/user-index.component';
 import { BookViewComponent } from './components/book-view/book-view.component';
 import { BorrowComponent } from './components/borrow/borrow.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path:'users', component:UserIndexComponent },
   { path:'books/:id', component:BookViewComponent },
   { path:'lend/:id', component:BorrowComponent },
+  { path:'landing', component:LandingComponent },
 ];
 
 @NgModule({
