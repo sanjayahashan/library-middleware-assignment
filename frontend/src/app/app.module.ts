@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooksComponent } from './components/books/books.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { UserIndexComponent } from './components/user/user-index/user-index.component';
+import { BookViewComponent } from './components/book-view/book-view.component';
+import { BorrowComponent } from './components/borrow/borrow.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,11 @@ import { LoginComponent } from './components/user/login/login.component';
     NavBarComponent,
     BooksComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    UserIndexComponent,
+    BookViewComponent,
+    BorrowComponent,
+    
   ],
   imports: [
     BrowserModule,

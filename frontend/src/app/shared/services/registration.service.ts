@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 const serverUrl = "localhost:8080/users/";
 
@@ -17,6 +18,14 @@ export class RegistrationService {
   add(user: User) {
     let headers = new HttpHeaders();
     headers.append('content-type', 'application/json');
-    return this.http.post<User>(serverUrl + "register", user);
+    return this.http.post<User>(serverUrl + "register/", user);
+  }
+
+  all(): Observable<User[]> {
+    return this.http.get<User[]>(serverUrl);
+  }
+
+  get(id: string): Observable<User> {
+    return this.http.get<User>(serverUrl + id);
   }
 }

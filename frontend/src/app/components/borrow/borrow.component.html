@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="borrowForm">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>User ID</mat-label>
+            <input matInput formControlName="user">
+          </mat-form-field>
+          <button mat-raised-button color="primary">Find User</button>
+        </p>
+
+        <input type="hidden" formControlName="specimen">
+        <p>
+          <mat-form-field appearance="outline">
+            <input matInput [matDatepicker]="return" placeholder="Return Date" formControlName="returnDate">
+            <mat-datepicker-toggle matSuffix [for]="return"></mat-datepicker-toggle>
+            <mat-datepicker #return></mat-datepicker>
+          </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="outline">
+              <input matInput [matDatepicker]="expire" placeholder="Expire Date" formControlName="expire">
+              <mat-datepicker-toggle matSuffix [for]="expire"></mat-datepicker-toggle>
+              <mat-datepicker #expire></mat-datepicker>
+            </mat-form-field>
+          </p>
+
+        <button mat-raised-button color="primary" (click)="onSubmit()">Confirm Lend</button>
+
+        </form>
+    </div>
+  </div>
+</div>

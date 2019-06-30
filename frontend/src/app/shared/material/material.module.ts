@@ -7,6 +7,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -19,6 +21,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSortModule,
     MatTableModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatFormFieldModule,
@@ -28,6 +32,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSortModule,
     MatTableModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }
