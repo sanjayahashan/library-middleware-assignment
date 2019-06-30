@@ -14,25 +14,23 @@ public class Borrowing {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn (name = "specimen_id")
-    private Specimen specimen;
 
-    @ManyToOne
-    @JoinColumn (name = "user_id")
-    private User user;
+    @Column (name = "specimen_id")
+    private Long specimen;
 
-    @Column
-    @Temporal(TemporalType.DATE)
-    private Date returnDate;
 
-    @Column
-    @Temporal(TemporalType.DATE)
-    private Date expire;
+    @Column (name = "user_id")
+    private Long user;
+
+    @Column(name ="return_date")
+    private String returnDate;
+
+    @Column(name = "expire_date")
+    private String expire;
 
     public Borrowing(){}
 
-    public Borrowing(Specimen specimen, User user, Date expire) {
+    public Borrowing(Long specimen, Long user, String expire) {
         this.specimen = specimen;
         this.user = user;
         this.returnDate = null;
@@ -47,35 +45,35 @@ public class Borrowing {
         this.id = id;
     }
 
-    public Specimen getSpecimen() {
+    public Long getSpecimen() {
         return specimen;
     }
 
-    public void setSpecimen(Specimen specimen) {
+    public void setSpecimen(Long specimen) {
         this.specimen = specimen;
     }
 
-    public User getUser() {
+    public Long getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Long user) {
         this.user = user;
     }
 
-    public Date getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 
-    public Date getExpire() {
+    public String getExpire() {
         return expire;
     }
 
-    public void setExpire(Date expire) {
+    public void setExpire(String expire) {
         this.expire = expire;
     }
 }
