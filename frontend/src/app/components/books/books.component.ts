@@ -39,7 +39,7 @@ export class BooksComponent implements OnInit {
   ngOnInit() {
     this.getBooks().subscribe(response => {
       this.dataSource = new MatTableDataSource(response);
-      console.log(this.dataSource);
+      // console.log(this.dataSource.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
