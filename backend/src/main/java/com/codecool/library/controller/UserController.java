@@ -6,6 +6,7 @@ import com.codecool.library.model.User;
 import com.codecool.library.model.login;
 import com.codecool.library.repository.UserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,4 +51,9 @@ public class UserController {
     	return userRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(method = RequestMethod.GET, value = "/users/{id}")
+    public User getUser(@PathVariable Long id) {
+    	return userRepository.findById(id).get();
+    }
 }
