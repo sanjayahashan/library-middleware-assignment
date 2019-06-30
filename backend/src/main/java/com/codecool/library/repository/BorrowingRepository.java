@@ -15,7 +15,6 @@ public interface BorrowingRepository extends JpaRepository<Borrowing, Long> {
 
 
 //    List<Borrowing> findBorrowingBySpecimenAndReturnDateIsNull(Specimen specimen);
-
-
+    List<Borrowing> findBorrowingById(Long id);
 
 }
