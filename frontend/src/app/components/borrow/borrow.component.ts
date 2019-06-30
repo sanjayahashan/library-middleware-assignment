@@ -34,12 +34,13 @@ export class BorrowComponent implements OnInit {
 
   onSubmit() {
     this.userService.get(this.borrowForm.get('user').value).subscribe(res => {
-      this.borrowing.user;
+      // this.borrowing.user = res;
+      console.log(res);
     });
     
-    this.borrowing.returnDate = this.borrowForm.get('returnDate').value;
-    this.borrowing.expire = this.borrowForm.get('expire').value;
+    // this.borrowing.returnDate = this.borrowForm.get('returnDate').value;
+    // this.borrowing.expire = this.borrowForm.get('expire').value;
 
-    console.log(this.borrowing);
+    // console.log(this.borrowing);
   }
 }
