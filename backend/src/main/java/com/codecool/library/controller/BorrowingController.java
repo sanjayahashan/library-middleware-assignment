@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = {"http://localhost:4200"}, maxAge = 4800, allowCredentials = "false")
 @RestController
 public class BorrowingController {
 
@@ -18,28 +19,28 @@ public class BorrowingController {
         this.borrowingRepository = borrowingRepository;
     }
 
-    @CrossOrigin(origins =  "http://localhost:4200")
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET,value = "/library/Borrowings/{id}")
     public Borrowing getBorrowingById(@PathVariable("id") Long id) {
         return borrowingRepository.findById(id).get();
     }
 
 
-    @CrossOrigin(origins =  "http://localhost:4200")
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET,value = "/library/Borrowings/")
     public List<Borrowing> getAllBorrowingById() {
         return (List<Borrowing>) borrowingRepository.findAll();
     }
 
 
-    @CrossOrigin(origins ="http://localhost:4200")
+    @CrossOrigin
     @DeleteMapping("/library/Borrowings/{id}")
     public void deleteBook(@PathVariable Long id){
         borrowingRepository.deleteById(id);
     }
 
 
-    @CrossOrigin(origins ="http://localhost:4200")
+    @CrossOrigin
     @PostMapping("/library/Borrowings")
     public Error_reply addBorrowing(@RequestBody Borrowing borrowing){
         borrowingRepository.save(borrowing);

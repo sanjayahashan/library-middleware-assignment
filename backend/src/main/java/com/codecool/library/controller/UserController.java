@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = {"http://localhost:4200"}, maxAge = 4800, allowCredentials = "false")
 @RestController
 public class UserController {
     public UserRepository userRepository;
@@ -37,14 +39,14 @@ public class UserController {
         Error_reply error =new Error_reply("Could not Authenticate User");
         return  null;
     }
-    
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(method = RequestMethod.POST, value ="/users/register")
     public User register(@RequestBody User register){
         userRepository.save(register);
         return register;
     }
-    
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     public List<User> getAllUsers() {
