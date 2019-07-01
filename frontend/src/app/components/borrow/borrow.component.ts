@@ -48,7 +48,9 @@ export class BorrowComponent implements OnInit {
     this.borrowservice.addBorrowing(borrow).subscribe(res =>{
       console.log(res);
       
-    });
+    })
+   
+    
 
     console.log(this.borrowing);
   }

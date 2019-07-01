@@ -10,7 +10,7 @@ export class BorrowserviceService {
 
   constructor(private http: HttpClient) { }
 
-  addBorrowing(borrowing:Borrowing){
+  public addBorrowing(borrowing:Borrowing){
     let headers = new HttpHeaders();
     headers.append('content-type', 'application/json');
     return this.http.post<Borrowing>(serverUrl, borrowing);
