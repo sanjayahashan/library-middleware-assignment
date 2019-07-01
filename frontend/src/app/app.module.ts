@@ -17,6 +17,7 @@ import { UserIndexComponent } from './components/user/user-index/user-index.comp
 import { BookViewComponent } from './components/book-view/book-view.component';
 import { BorrowComponent } from './components/borrow/borrow.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { LendingComponent } from './components/lending/lending.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LandingComponent } from './components/landing/landing.component';
     BookViewComponent,
     BorrowComponent,
     LandingComponent,
+    LendingComponent,
     
   ],
   imports: [
