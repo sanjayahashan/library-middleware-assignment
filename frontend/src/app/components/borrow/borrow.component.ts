@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Borrowing } from 'src/app/shared/models/borrowing';
 import { RegistrationService } from 'src/app/shared/services/registration.service';
 import { ActivatedRoute } from '@angular/router';
+import { BorrowserviceService } from 'src/app/shared/services/borrowservice.service';
 
 @Component({
   selector: 'app-borrow',
@@ -15,7 +16,8 @@ export class BorrowComponent implements OnInit {
 
   constructor(
     private userService: RegistrationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private borrowservice:BorrowserviceService
   ) { }
 
   ngOnInit() {
@@ -33,14 +35,21 @@ export class BorrowComponent implements OnInit {
   });
 
   onSubmit() {
-    this.userService.get(this.borrowForm.get('user').value).subscribe(res => {
-      // this.borrowing.user = res;
-      console.log(res);
-    });
+    // this.userService.get(this.borrowForm.get('user').value).subscribe(res => {
+    //   // this.borrowing.user = res;
+    //   console.log(res);
+    // });
     
     // this.borrowing.returnDate = this.borrowForm.get('returnDate').value;
     // this.borrowing.expire = this.borrowForm.get('expire').value;
+    //console.log(this.borrowForm.value);
+    let borrow:Borrowing =this.borrowForm.value;
+    
+    this.borrowservice.addBorrowing(borrow).subscribe(res =>{
+      console.log(res);
+      
+    });
 
-    // console.log(this.borrowing);
+    console.log(this.borrowing);
   }
 }
