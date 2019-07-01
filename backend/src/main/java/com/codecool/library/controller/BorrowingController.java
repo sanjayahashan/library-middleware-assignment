@@ -19,7 +19,7 @@ public class BorrowingController {
         this.borrowingRepository = borrowingRepository;
     }
 
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(method = RequestMethod.GET,value = "/library/borrowings/{id}")
     public Borrowing getBorrowingById(@PathVariable("id") Long id) {
         return borrowingRepository.findById(id).get();
@@ -33,14 +33,14 @@ public class BorrowingController {
     }
 
 
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/library/Borrowings/{id}")
     public void deleteBook(@PathVariable Long id){
         borrowingRepository.deleteById(id);
     }
 
 
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/library/Borrowings")
     public Error_reply addBorrowing(@RequestBody Borrowing borrowing){
         borrowingRepository.save(borrowing);
