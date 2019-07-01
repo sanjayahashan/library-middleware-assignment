@@ -20,7 +20,8 @@ const routes: Routes = [
   { path:'users', component:UserIndexComponent },
   { path:'books/:id', component:BookViewComponent },
   { path:'lend/:id', component:BorrowComponent },
-  { path:'landing', component:LendingComponent },
+  { path:'lending', component:LendingComponent },
+  { path:'landing', component:LandingComponent },
 ];
 
 @NgModule({

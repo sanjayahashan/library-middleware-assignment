@@ -6,6 +6,8 @@ import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Specimen } from 'src/app/shared/models/specimen';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { BorrowserviceService } from 'src/app/shared/services/borrowservice.service';
+import { Borrowing } from 'src/app/shared/models/borrowing';
 
 
 @Component({
@@ -16,8 +18,9 @@ import { MatSort } from '@angular/material/sort';
 export class LendingComponent implements OnInit {
 
   private book: Book;
-  dataSource: MatTableDataSource<Specimen>;
-  displayedColumns: string[] = ['id', 'bookingTime', 'publishment', 'actions'];
+  private borrow: Borrowing;
+  dataSource: MatTableDataSource<Borrowing>;
+  displayedColumns: string[] = ['id', 'specimen', 'user', 'returnDate', 'expire'];
 
   @ViewChild(MatTable, {static:true}) table: MatTable<Specimen>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -25,16 +28,14 @@ export class LendingComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private borrowingService: BorrowserviceService
   ) { }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.bookService.get(id).subscribe(res => {
-      this.book = res;
-      this.dataSource = new MatTableDataSource(this.book.specimens);
-      console.log(this.book);
-    });
+    this.borrowingService.all().subscribe(res => {
+      this.dataSource = new MatTableDataSource(res);
+    })
   }
 
   applyFilter(filterValue: string) {
